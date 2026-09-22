@@ -5,7 +5,7 @@ const Header = (props) => {
 const Part = (props) => {
   return (
     <p>
-      {props.part} {props.exercises}
+      {props.part.name} {props.part.exercises}
     </p>
   )
 }
@@ -13,9 +13,9 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.part1} exercises={props.exercises1} />
-      <Part part={props.part2} exercises={props.exercises2} />
-      <Part part={props.part3} exercises={props.exercises3} />
+      <Part part={props.part1} />
+      <Part part={props.part2} />
+      <Part part={props.part3} />
     </div> 
   )
 }
@@ -35,12 +35,18 @@ const Footer = (props) => {
 
 const App = () => {
   const course = 'BS Information Technology'
-  const part1 = 'CSIT340 - Industry Elective 1'
-  const exercises1 = 3
-  const part2 = 'CSIT321 - Applications Development and Emerging Technologies'
-  const exercises2 = 3
-  const part3 = 'CSIT365 - Data Analytics 1'
-  const exercises3 = 3
+  const part1 = {
+    name: 'CSIT340 - Industry Elective 1',
+    exercises: 3 
+  }
+  const part2 = {
+    name: 'CSIT321 - Applications Development and Emerging Technologies',
+    exercises: 3
+  }
+  const part3 = {
+    name: 'CSIT365 - Data Analytics 1',
+    exercises: 3
+  }
 
   const studentName = 'Angela Vem Limos'
   const courseCode = 'CSIT340'
@@ -49,12 +55,8 @@ const App = () => {
   return (
     <div>
       <Header course = {course} />
-      <Content
-        part1={part1} exercises1={exercises1}
-        part2={part2} exercises2={exercises2}
-        part3={part3} exercises3={exercises3}
-      />
-      <Total total={exercises1 + exercises2 + exercises3} />
+      <Content part1={part1} part2={part2} part3={part3} />
+      <Total total={part1.exercises + part2.exercises + part3.exercises} />
       <Footer fullName={studentName} courseCode={courseCode} section={section} />
      </div> 
   )
